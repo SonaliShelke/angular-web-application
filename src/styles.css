@@ -1,0 +1,38 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+}
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.company-logo {
+    height: 70px;
+    width: 50px;
+}
+.example-spacer {
+    flex: 1 1 auto;
+}
+mat-card {
+    max-width: 400px;
+    margin: 2em auto;
+    text-align: center;
+}
+
+mat-card .remember-checkbox {
+    float: left;
+    font-weight: bold;
+}
+.login-button {
+    justify-content: flex-end;
+}
+
+.example-section {
+    display: flex;
+    align-content: center;
+    align-items: Left;
+    height: 60px;
+}
