@@ -31,17 +31,17 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ### …or create a new repository on the command line
 ```
 echo "# angular-web-application" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git branch -M master
-git remote add origin git@github.com:SonaliShelke/angular-web-application.git
-git push -u origin master
+sudo git init
+sudo git add README.md
+sudo git commit -m "first commit"
+sudo git branch -M master
+sudo git remote add origin git@github.com:SonaliShelke/angular-web-application.git
+sudo git push -u origin master
 ```
 
 ### …or push an existing repository from the command line
 ```
-git remote add origin git@github.com:SonaliShelke/angular-web-application.git
-git branch -M master
-git push -u origin master
+sudo git remote add origin git@github.com:SonaliShelke/angular-web-application.git
+sudo git branch -M master
+sudo git push -u origin master
 ```

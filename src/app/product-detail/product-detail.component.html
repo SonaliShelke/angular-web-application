@@ -1,0 +1,74 @@
+<!-- <mat-sidenav-container class="example-container">
+    <mat-sidenav class="product-child-class" mode="side" opened>
+        <app-product-list (productIdParent)="productIdParentChange($event)"></app-product-list>
+    </mat-sidenav>
+    <mat-sidenav-content>Main content</mat-sidenav-content>
+</mat-sidenav-container> -->
+
+
+
+
+
+
+<div class="main-div">
+    <div class="sub-main">
+        <div class="div-left-child-class">
+            <app-product-list (productIdParent)="productIdParentChange($event)"></app-product-list>
+        </div>
+        <div class="div-right-child-class">
+            <p>product-detail works!</p>
+            <!-- <mat-card>
+                <mat-card-content>
+                    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                        <h2>Product</h2>
+
+                        <mat-form-field class="full-width-input">
+                            <input matInput placeholder="User Id" formControlName="userId" required>
+                            <mat-error>
+                                Please provide a valid User Id
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="full-width-input">
+                            <input matInput placeholder="User Id" formControlName="id" required>
+                            <mat-error>
+                                Please provide a valid ID
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="full-width-input">
+                            <input matInput placeholder="User Id" formControlName="title" required>
+                            <mat-error>
+                                Please provide a valid ID
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="full-width-input">
+                            <input matInput type="password" placeholder="Password" formControlName="body" required>
+                            <mat-error>
+                                Please provide a valid password
+                            </mat-error>
+                        </mat-form-field>
+                        <!-- <mat-checkbox class="remember-checkbox ">Remember Password</mat-checkbox> ->
+                        <button mat-raised-button color="primary">Add</button>
+                        <button mat-raised-button color="primary">Edit</button>
+                        <button mat-raised-button color="primary">Delete</button>
+                        <button mat-raised-button color="primary">Edit</button>
+
+                    </form>
+                </mat-card-content> -->
+
+        </div>
+    </div>
+</div>
+
+
+
+<!-- <mat-grid-list cols="2" rowHeight="2:1">
+    <mat-grid-tile>1
+
+
+        <app-product-list></app-product-list>
+
+    </mat-grid-tile>
+
+    <mat-grid-tile>2</mat-grid-tile>
+
+</mat-grid-list> -->
