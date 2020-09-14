@@ -4,6 +4,7 @@ html,
 body {
     height: 100%;
 }
+
 body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
@@ -13,9 +14,11 @@ body {
     height: 74px;
     width: 172px;
 }
+
 .example-spacer {
     flex: 1 1 auto;
 }
+
 mat-card {
     max-width: 400px;
     margin: 2em auto;
@@ -26,6 +29,7 @@ mat-card .remember-checkbox {
     float: left;
     font-weight: bold;
 }
+
 .login-button {
     justify-content: flex-end;
 }
@@ -36,6 +40,7 @@ mat-card .remember-checkbox {
     align-items: Left;
     height: 60px;
 }
+
 h2 {
     color: #3f51b5;
 }

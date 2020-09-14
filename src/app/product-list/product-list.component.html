@@ -1,6 +1,6 @@
 <mat-selection-list [multiple]="false">
     <mat-list-option class="item-title" *ngFor="let productList of productLists | async;let i = index"
-        (click)="displayProductDetails(productList)">
+        (click)="setProductDetails(productList)">
         {{productList.title}}
     </mat-list-option>
 </mat-selection-list>

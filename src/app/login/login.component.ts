@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ThemePalette } from '@angular/material/core';
-import { FormControl } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UtilityService } from '../utility.service';
@@ -31,10 +29,10 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.data = this.utilityService.getUserData('userData');
 
+    //Check whether local storage value(this.data.email)  and form value(this.form.value.username) username is correct or not
     if (this.data && this.form.value.username == this.data.email && this.form.value.password == this.data.password) {
       this.setToken();
       this.router.navigateByUrl('/productdetail');
-      console.log('from value', this.form.value);
     }
     else {
       let msg = this.data ? 'Username Password is Incorrect.' : 'Please Register First!!!';
@@ -42,6 +40,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  //Set the static token in Local Storage 
   setToken() {
     this.utilityService.setUserData('token', 'sshdumytoken')
 

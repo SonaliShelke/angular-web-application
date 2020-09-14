@@ -28,37 +28,15 @@ export class RegisterComponent implements OnInit {
       }
     );
   }
+  ngOnInit(): void { }
 
   onSubmit() {
+    //Call the setUserData  to store data in local storage
     this.utilityService.setUserData('userData', this.registerForm.value);
     this.router.navigateByUrl('/login');
   }
 
-  getData() {
-    this.utilityService.get('')
-      .subscribe(
-        (response: any) => {
-          if (!response.err_code) {
-            //  this.pollutants = response.records;
-            //  this.pollutantsTemp = response.records;
-          } else {
-            console.log("Error in API !!");
-          }
-        },
-      );
-  }
-  postData() {
-    this.utilityService.post('', {})
-      .subscribe(res => {
-        console.log()
-      },
-        err => { console.log(err); }
-      )
-  }
-  ngOnInit(): void {
-  }
-
-
+  // MatchPassword Used for To Confirm Password is correcrt or not
   MatchPassword(AC: AbstractControl) {
     let password = AC.get('password').value;
     if (AC.get('confirmPassword').touched || AC.get('confirmPassword').dirty) {

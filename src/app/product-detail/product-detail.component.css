@@ -2,6 +2,7 @@
     display: flex;
     width: 100%;
 }
+
 .div-left-child-class {
     float: left;
     width: 30%;
@@ -9,14 +10,16 @@
     height: 52em;
     border-right: 1px solid gray;
 }
+
 .div-right-child-class {
-    /* float: left; */
     width: 60%;
     float: left;
 }
+
 mat-form-field {
     display: block;
 }
+
 .div-button {
     margin: 3px 10px;
 }

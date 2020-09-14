@@ -18,14 +18,12 @@ export class ProductDetailComponent implements OnInit {
   data;
   userName;
 
-
   constructor(private utilityservice: UtilityService,
     private httpclient: HttpClient,
     public actRoute: ActivatedRoute,
     public router: Router,
     private route: ActivatedRoute,
     private fb: FormBuilder) {
-
     this.productForm = this.fb.group({
       userId: [''],
       id: [''],
@@ -35,60 +33,56 @@ export class ProductDetailComponent implements OnInit {
     });
     this.data = utilityservice.getUserData('userData');
     this.userName = this.data.name;
-    console.log('username', this.userName);
   }
 
 
   ngOnInit(): void { }
 
-  productIdParentChange(newItem: string) {
-    console.log('Id', newItem);
-    let params = 'posts/' + newItem;
+  // Catch the product id from child component(product-list)
+  productIdParentChange(proId: string) {
+    let params = 'posts/' + proId;
     this.utilityservice.get(params).subscribe(data => {
       this.productDetails = data;
-      console.log('prod details', this.productDetails);
       this.productForm.patchValue(this.productDetails);
     }, error => console.log(error));
   }
+
   clearField() {
     this.productForm.reset();
   }
 
+  //Save data by using post method
   save() {
     let formObj = this.productForm.value;
     let params = 'posts';
     this.utilityservice.post(params, formObj).subscribe(data => {
 
       this.productDetails = data;
-      console.log('prod details', this.productDetails);
+      //By using angular material Open Snackbar Data Save message shown on screen 
       this.utilityservice.openSnackBar('DATA SAVE SUCESSFULLY !!!!');
     }, error => console.log(error));
   }
 
+  //Update data by using put method
   update() {
     let formObj = this.productForm.value;
     let params = 'posts/' + formObj.id;
     this.utilityservice.put(params, formObj).subscribe(data => {
       this.productDetails = data;
-      console.log('prod details', this.productDetails);
       this.productForm.patchValue(this.productDetails);
       this.utilityservice.openSnackBar('DATA UPDATE SUCESSFULLY !!!!');
     }, error => console.log(error));
   }
 
+  //Delete data by using delete method
   delete() {
     let formObj = this.productForm.value;
     let params = 'posts/' + formObj.id;
     this.utilityservice.delete(params, {}).subscribe(data => {
       this.productDetails = data;
-      console.log('prod details', this.productDetails);
       this.utilityservice.openSnackBar('DATA DELETE SUCESSFULLY !!!!');
-
     }, error => console.log(error));
   }
-
-
-  onSubmit() { }
 
 
 }

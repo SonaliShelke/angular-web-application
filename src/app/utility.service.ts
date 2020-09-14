@@ -23,18 +23,12 @@ export class UtilityService {
     this.headers = new Headers();
   }
 
-  public setExtras(data) {
-    this.extras = data;
-  }
-
-  public getExtras() {
-    return this.extras;
-  }
-
+  //Set the userdata on localstorage
   public setUserData(params: string, formValue: any) {
     localStorage.setItem(params, JSON.stringify(formValue));
   }
 
+  //get the user data from local storage
   public getUserData(params: string) {
     return JSON.parse(localStorage.getItem(params));
   }
@@ -95,6 +89,7 @@ export class UtilityService {
         catchError(this.handleError))
   }
 
+  //By using angular material Open Snackbar message shown on screen 
   openSnackBar(msg) {
     this._snackBar.open(msg, '', {
       duration: 4000,

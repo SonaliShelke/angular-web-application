@@ -1,7 +1,3 @@
-.product-list {
-	margin: 7px;
-}
-
 .item-title {
 	line-height: 31px;
 	padding: 7px;
@@ -10,8 +6,4 @@
 	overflow: hidden;
 	text-overflow: ellipsis;
 	border-bottom: 1px solid #9e9e9e;
-}
-
-.item-icon {
-	float: right;
 }

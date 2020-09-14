@@ -3,7 +3,7 @@ import { UtilityService } from '../utility.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProductDetailComponent } from '../product-detail/product-detail.component';
+
 
 
 @Component({
@@ -34,28 +34,14 @@ export class ProductListComponent implements OnInit {
     this.getProductList();
   }
 
+  //Get the Product List by using post method
   getProductList() {
     this.productLists = this.utilityservice.get('posts/');
-    // this.utilityservice.get({})
-    //   .subscribe(
-    //     (response: any) => {
-    //       if (!response.err_code) {
-    //         this.productLists = response;
-    //         console.log('product Data', this.productLists);
-    //         console.log('Product list Title', this.productLists[0].title);
-    //         //  this.pollutantsTemp = response.records;
-    //       } else {
-    //         console.log("Error in API !!");
-    //       }
-    //     },
-    //   );
-
   }
-  displayProductDetails(product) {
 
-    console.log('id to parent:', product);
+  setProductDetails(product) {
+    //Passing data from child(Product-list) to Parent(Product-detais)
     this.productIdParent.emit(product.id);
-
   }
 
 

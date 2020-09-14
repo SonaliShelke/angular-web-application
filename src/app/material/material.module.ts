@@ -50,9 +50,6 @@ import { OverlayModule } from '@angular/cdk/overlay';
   declarations: [],
   imports: [
     CommonModule,
-    MatTabsModule,
-    MatButtonModule,
-    MatCardModule
   ],
   exports: [
 
