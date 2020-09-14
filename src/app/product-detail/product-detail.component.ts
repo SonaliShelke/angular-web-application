@@ -17,6 +17,7 @@ export class ProductDetailComponent implements OnInit {
   userDisplayName = ''
   data;
   userName;
+  isDisabled: boolean = true;
 
   constructor(private utilityservice: UtilityService,
     private httpclient: HttpClient,
@@ -40,14 +41,17 @@ export class ProductDetailComponent implements OnInit {
 
   // Catch the product id from child component(product-list)
   productIdParentChange(proId: string) {
+    this.isDisabled = false;
     let params = 'posts/' + proId;
     this.utilityservice.get(params).subscribe(data => {
       this.productDetails = data;
       this.productForm.patchValue(this.productDetails);
     }, error => console.log(error));
+
   }
 
   clearField() {
+    this.isDisabled = true;
     this.productForm.reset();
   }
 
@@ -55,8 +59,9 @@ export class ProductDetailComponent implements OnInit {
   save() {
     let formObj = this.productForm.value;
     let params = 'posts';
-    this.utilityservice.post(params, formObj).subscribe(data => {
 
+    this.isDisabled = false;
+    this.utilityservice.post(params, formObj).subscribe(data => {
       this.productDetails = data;
       //By using angular material Open Snackbar Data Save message shown on screen 
       this.utilityservice.openSnackBar('DATA SAVE SUCESSFULLY !!!!');
@@ -80,6 +85,7 @@ export class ProductDetailComponent implements OnInit {
     let params = 'posts/' + formObj.id;
     this.utilityservice.delete(params, {}).subscribe(data => {
       this.productDetails = data;
+      this.clearField();
       this.utilityservice.openSnackBar('DATA DELETE SUCESSFULLY !!!!');
     }, error => console.log(error));
   }
