@@ -15,7 +15,8 @@ export class ProductDetailComponent implements OnInit {
   productForm: FormGroup;
   productDetails: any = [];
   userDisplayName = ''
-
+  data;
+  userName;
 
 
   constructor(private utilityservice: UtilityService,
@@ -32,7 +33,11 @@ export class ProductDetailComponent implements OnInit {
       body: ['', Validators.required]
 
     });
+    this.data = utilityservice.getUserData('userData');
+    this.userName = this.data.name;
+    console.log('username', this.userName);
   }
+
 
   ngOnInit(): void { }
 
@@ -56,7 +61,7 @@ export class ProductDetailComponent implements OnInit {
 
       this.productDetails = data;
       console.log('prod details', this.productDetails);
-      this.utilityservice.openSnackBar('save  sucessfully');
+      this.utilityservice.openSnackBar('DATA SAVE SUCESSFULLY !!!!');
     }, error => console.log(error));
   }
 
@@ -67,7 +72,7 @@ export class ProductDetailComponent implements OnInit {
       this.productDetails = data;
       console.log('prod details', this.productDetails);
       this.productForm.patchValue(this.productDetails);
-      this.utilityservice.openSnackBar('update sucessfully');
+      this.utilityservice.openSnackBar('DATA UPDATE SUCESSFULLY !!!!');
     }, error => console.log(error));
   }
 
@@ -77,7 +82,7 @@ export class ProductDetailComponent implements OnInit {
     this.utilityservice.delete(params, {}).subscribe(data => {
       this.productDetails = data;
       console.log('prod details', this.productDetails);
-      this.utilityservice.openSnackBar('delete sucessfully');
+      this.utilityservice.openSnackBar('DATA DELETE SUCESSFULLY !!!!');
 
     }, error => console.log(error));
   }

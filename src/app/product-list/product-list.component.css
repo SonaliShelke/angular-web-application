@@ -2,18 +2,14 @@
 	margin: 7px;
 }
 
-.item {
+.item-title {
 	line-height: 31px;
 	padding: 7px;
-	background-color: #b9b1b100;
-	border-bottom: 1px solid #9e9e9e;
 	display: block;
-}
-
-.item-title {
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	border-bottom: 1px solid #9e9e9e;
 }
 
 .item-icon {

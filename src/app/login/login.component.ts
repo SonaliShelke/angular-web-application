@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
     this.data = this.utilityService.getUserData('userData');
 
     if (this.data && this.form.value.username == this.data.email && this.form.value.password == this.data.password) {
+      this.setToken();
       this.router.navigateByUrl('/productdetail');
       console.log('from value', this.form.value);
     }
@@ -41,6 +42,9 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  setToken() {
+    this.utilityService.setUserData('token', 'sshdumytoken')
 
+  }
 
 }

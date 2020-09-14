@@ -14,21 +14,20 @@ import { ProductDetailComponent } from '../product-detail/product-detail.compone
 export class ProductListComponent implements OnInit {
 
   productLists: Observable<Array<any>>
+  data;
+  userName;
 
-  // @Input() product;
-  // @Output() productIdParent = new EventEmitter<string>();
-  //@Output() newItemEvent = new EventEmitter<string>();
   @Output() productIdParent = new EventEmitter();
 
-
-  // id = this.actRoute.snapshot.params['id'];
   productDetails: any = [];
 
   constructor(private utilityservice: UtilityService,
     private httpclient: HttpClient,
     public actRoute: ActivatedRoute,
     public router: Router) {
-
+    this.data = utilityservice.getUserData('userData');
+    this.userName = this.data.name;
+    console.log('username', this.userName);
   }
 
   ngOnInit(): void {

@@ -1,14 +1,20 @@
+<mat-toolbar color="primary">
+    <img class="company-logo" src="../../assets/image//company-logo-13.png" alt="Photo of a Shiba Inu">
+    <span class="example-spacer"></span>
+    <mat-label>Welcome {{userName}}</mat-label>
+</mat-toolbar>
 <div class="main-div">
     <div class="sub-main">
         <div class="div-left-child-class">
             <app-product-list (productIdParent)="productIdParentChange($event)"></app-product-list>
         </div>
         <div class="div-right-child-class">
-            <p>product-detail works!</p>
             <mat-card>
                 <mat-card-content>
                     <form [formGroup]="productForm">
-                        <h2>Product</h2>
+                        <h2>
+                            PRODUCT
+                        </h2>
 
                         <mat-form-field class="full-width-input">
                             <input matInput placeholder="Title" formControlName="title" required>
@@ -41,3 +47,5 @@
         </div>
     </div>
 </div>
+<mat-toolbar color="primary">Footer
+</mat-toolbar>
