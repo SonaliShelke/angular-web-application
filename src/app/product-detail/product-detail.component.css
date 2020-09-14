@@ -14,3 +14,9 @@
     width: 60%;
     float: left;
 }
+mat-form-field {
+    display: block;
+}
+.div-button {
+    margin: 3px 10px;
+}

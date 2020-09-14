@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
-
+import { MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition, MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Injectable({
@@ -12,10 +12,16 @@ export class UtilityService {
 
   headers: any;
   baseUrl: string = "https://jsonplaceholder.typicode.com/";
-  params_object: any;
-  id: number;
+
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
+
 
   extras: any;
+
+  constructor(private httpClient: HttpClient, private _snackBar: MatSnackBar) {
+    this.headers = new Headers();
+  }
 
   public setExtras(data) {
     this.extras = data;
@@ -25,19 +31,13 @@ export class UtilityService {
     return this.extras;
   }
 
-
-
-  constructor(private httpClient: HttpClient) {
-    this.headers = new Headers();
+  public setUserData(params: string, formValue: any) {
+    localStorage.setItem(params, JSON.stringify(formValue));
   }
 
-  // Http Options
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json'
-    })
+  public getUserData(params: string) {
+    return JSON.parse(localStorage.getItem(params));
   }
-
 
   // Handle API errors
   handleError(error: HttpErrorResponse) {
@@ -53,15 +53,8 @@ export class UtilityService {
   };
 
 
-
-
   get(params: string, options: any = this.headers): Observable<any> {
     let urlSearchParams = new URLSearchParams();
-    //  urlSearchParams.append('api-key', this.params_object.API_KEY);
-    //  urlSearchParams.append('format', this.params_object.FORMAT);
-    //  urlSearchParams.append('offset', this.params_object.OFFSET);
-    //  urlSearchParams.append('limit', this.params_object.LIMIT);
-
     return this.httpClient
       .get(this.baseUrl + params)
       .pipe(
@@ -78,25 +71,36 @@ export class UtilityService {
         catchError(this.handleError))
   }
 
-
-
-
-
-
-  post(obj: any, options: any = this.headers): Observable<any> {
-    // let urlSearchParams = new URLSearchParams();
-    // urlSearchParams.append('api-key', this.params_object.API_KEY);
-    //  urlSearchParams.append('format', this.params_object.FORMAT);
-    //  urlSearchParams.append('offset', this.params_object.OFFSET);
-    //  urlSearchParams.append('limit', this.params_object.LIMIT);
-
+  post(params: string, obj?: any, options: any = this.headers): Observable<any> {
     return this.httpClient
-      .post<any>(this.baseUrl, obj)
+      .post<any>(this.baseUrl + params, obj)
       .pipe(
         retry(2),
         catchError(this.handleError))
-
   }
 
+  put(params: string, dataObj?: any, options: any = this.headers): Observable<any> {
+    return this.httpClient
+      .put<any>(this.baseUrl + params, dataObj)
+      .pipe(
+        retry(2),
+        catchError(this.handleError))
+  }
+
+  delete(params: string, dataObj?: any, options: any = this.headers): Observable<any> {
+    return this.httpClient
+      .delete<any>(this.baseUrl + params, dataObj)
+      .pipe(
+        retry(2),
+        catchError(this.handleError))
+  }
+
+  openSnackBar(msg) {
+    this._snackBar.open(msg, '', {
+      duration: 4000,
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+    });
+  }
 
 }

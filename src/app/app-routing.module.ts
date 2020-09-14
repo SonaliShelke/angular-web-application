@@ -6,20 +6,12 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { ProductListComponent } from './product-list/product-list.component';
 
 const routes: Routes = [
-  // { path: '', redirectTo: 'login', pathMatch: 'full' },
-
-  //{ path: '', component: LoginComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-
   { path: 'register', component: RegisterComponent },
   { path: 'productlist', component: ProductListComponent },
-  // { path: '', component: ProductDetailComponent },
   { path: 'productdetail', component: ProductDetailComponent },
-  { path: '', redirectTo: 'productdetail', pathMatch: 'full' },
   { path: 'productdetail/:id', component: ProductDetailComponent },
-
-
-
 ];
 
 @NgModule({

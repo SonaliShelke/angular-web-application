@@ -24,26 +24,20 @@
             <mat-form-field class="full-width-input">
                 <input matInput type="password" placeholder="Confirm Password" formControlName="confirmPassword"
                     required>
-                <!-- <mat-error>
+                <mat-error>
                     Please provide a valid password
-                </mat-error> -->
-
+                </mat-error>
                 <mat-error
                     *ngIf="registerForm.controls['confirmPassword'].pristine || registerForm.controls['confirmPassword'].errors?.MatchPassword">
                     Password does not match</mat-error>
 
             </mat-form-field>
-            <!-- <mat-checkbox class="full-width-checkbox remember-checkbox ">Accept Tearms & Condition</mat-checkbox> -->
             <section class="example-section">
-                <mat-checkbox class="example-margin">Accept Tearms & Condition</mat-checkbox>
-
+                <mat-checkbox class="example-margin" formControlName="matCheckBox">Accept Tearms & Condition
+                </mat-checkbox>
             </section>
-
-
-            <button mat-raised-button color="primary">Register</button>
-
-
-
+            <button mat-raised-button color="primary" [disabled]="!registerForm.valid"
+                *ngIf="isDisabled">Register</button>
         </form>
     </mat-card-content>
 
